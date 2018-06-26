@@ -1,0 +1,14 @@
+build:
+  stage: build
+  script:
+    - make
+  artifacts:
+    paths:
+    - build/
+
+
+
+test:
+  stage: test
+  script:
+    - ./build/kissframe
