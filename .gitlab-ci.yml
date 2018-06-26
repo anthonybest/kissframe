@@ -1,12 +1,28 @@
+image: ubuntu:16.04
+
+before_script:
+  - apt-get update -yqq
+  - apt-get install -y -qq build-essential ccache
+  - mkdir -p ccache
+  - export CCACHE_BASEDIR=${PWD}
+  - export CCACHE_DIR=${PWD}/ccache
+
+stages:
+  - build
+  - test
+
+cache:
+  paths:
+    - build
+    - ccache
+
 build:
   stage: build
   script:
-    - make
+    - make CC="ccache gcc"
   artifacts:
     paths:
     - build/
-
-
 
 test:
   stage: test
