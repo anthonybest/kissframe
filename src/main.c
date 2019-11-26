@@ -236,6 +236,8 @@ bool test_frame_fcsesc()
 
 		s = encode_frame(chkdata2[i], enc, 3);
 		n = decode_frame(enc, s, dec, sizeof(dec));
+		
+		printf("n = %d\n", n);
 
 
 		if( (((fcs>>8)&0xff) != chkdata2[i][3]) ||  ((fcs&0xff) != chkdata2[i][4]))
@@ -248,6 +250,8 @@ bool test_frame_fcsesc()
 
 		s = encode_frame(chkdata2[i], enc, 3);
 		n = decode_frame(enc, s, dec, sizeof(dec));
+		
+		printf("n = %d\n", n);
 
 		if( (dec[0] != chkdata2[i][0]) || (dec[1] != chkdata2[i][1]) || (dec[2] != chkdata2[i][2]) )
 		{
@@ -318,6 +322,8 @@ bool test_frame_keyvalues()
 
 		s = encode_frame(data, enc, 1);
 		n = decode_frame(enc, s, dec, sizeof(dec));
+		
+		printf("n = %d\n", n);
 
 		if( (1 != n) || (dec[0] != data[0]) )
 		{
@@ -348,6 +354,8 @@ bool test_frame_keyvalues()
 
 			s = encode_frame(data, enc, 2);
 			n = decode_frame(enc, s, dec, sizeof(dec));
+
+            printf("n = %d\n", n);
 
 			if( (2 != n) || (dec[0] != data[0]) || (dec[1] != data[1]) )
 			{
@@ -387,6 +395,8 @@ bool test_frame_keyvalues()
 
 				s = encode_frame(data, enc, 3);
 				n = decode_frame(enc, s, dec, sizeof(dec));
+				
+				printf("n = %d\n", n);
 
 #if 0
 				// Make table for testing
